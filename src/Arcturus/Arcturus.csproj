@@ -84,7 +84,7 @@
     <Compile Include="Abstract\NinjectControllerFactory.cs" />
     <Compile Include="Concrete\FieldMapper.cs" />
     <Compile Include="Concrete\GenericController.cs" />
-    <Compile Include="Concrete\GenericRepository.cs" />
+    <Compile Include="Concrete\EntityFrameworkRepository.cs" />
     <Compile Include="Abstract\IGenericController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
