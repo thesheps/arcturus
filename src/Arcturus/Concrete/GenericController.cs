@@ -1,4 +1,5 @@
 ﻿using Arcturus.Abstract;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace Arcturus.Concrete
@@ -14,7 +15,8 @@ namespace Arcturus.Concrete
         public ActionResult Index()
         {
             var items = _repository.GetAll();
-            return View(items);
+            var result = _fieldMapper.Map<IEnumerable<TViewModel>>(items);
+            return View(result);
         }
 
         public ActionResult Create()
@@ -31,7 +33,7 @@ namespace Arcturus.Concrete
                 _repository.Insert(entity);
                 return RedirectToAction("Index");
             }
-            return View(entity);
+            return View(viewModel);
         }
 
         [HttpPost]
