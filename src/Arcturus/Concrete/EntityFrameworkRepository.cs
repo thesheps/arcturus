@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Arcturus.Concrete
 {
-    public class EntityFrameworkRepository<TEntity, TContext> : IGenericRepository<TEntity, TContext>
+    public class EntityFrameworkRepository<TEntity, TContext> : IGenericRepository<TEntity>
         where TEntity : class
         where TContext : DbContext
     {

@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace Arcturus.Tests
 {
     [TestFixture]
-    public class GivenGenericController : IGenericRepository<TestEntity, TestContext>
+    public class GivenGenericController : IGenericRepository<TestEntity>
     {
         [SetUp]
         public void Setup()

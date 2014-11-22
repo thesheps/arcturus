@@ -3,9 +3,9 @@ using System.Web.Mvc;
 
 namespace Arcturus.Concrete
 {
-    public class GenericController<TEntity, TContext> : Controller, IGenericController<TEntity>
+    public class GenericController<TEntity, TViewModel> : Controller, IGenericController<TEntity, TViewModel>
     {
-        public GenericController(IGenericRepository<TEntity, TContext> repository, IFieldMapper fieldMapper)
+        public GenericController(IGenericRepository<TEntity> repository, IFieldMapper fieldMapper)
         {
             _repository = repository;
             _fieldMapper = fieldMapper;
@@ -23,8 +23,9 @@ namespace Arcturus.Concrete
         }
 
         [HttpPost]
-        public ActionResult Create(TEntity entity)
+        public ActionResult Create(TViewModel viewModel)
         {
+            var entity = default(TEntity);
             if (ModelState.IsValid)
             {
                 _repository.Insert(entity);
@@ -48,7 +49,7 @@ namespace Arcturus.Concrete
             _repository.Delete(item);
         }
 
-        private readonly IGenericRepository<TEntity, TContext> _repository;
+        private readonly IGenericRepository<TEntity> _repository;
         private readonly IFieldMapper _fieldMapper;
     }
 }

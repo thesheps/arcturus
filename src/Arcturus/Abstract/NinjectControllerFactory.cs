@@ -18,8 +18,8 @@ namespace Arcturus.Abstract
         private void AddDefaultBindings(IKernel kernel)
         {
             kernel.Bind<IFieldMapper>().To<FieldMapper>();
-            kernel.Bind(typeof(IGenericController<>)).To(typeof(GenericController<,>));
-            kernel.Bind(typeof(IGenericRepository<,>)).To(typeof(EntityFrameworkRepository<,>));
+            kernel.Bind(typeof(IGenericController<,>)).To(typeof(GenericController<,>));
+            kernel.Bind(typeof(IGenericRepository<>)).To(typeof(EntityFrameworkRepository<,>));
         }
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
