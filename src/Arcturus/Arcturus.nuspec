@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>.\Arcturus.dll</id>
+    <id>Arcturus.dll</id>
     <version>1.0.0</version>
     <authors>chris</authors>
     <owners>chris</owners>
