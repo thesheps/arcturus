@@ -7,11 +7,10 @@ using System.Linq;
 
 namespace Arcturus.Concrete
 {
-    public class EntityFrameworkRepository<TEntity, TContext> : IGenericRepository<TEntity>
+    public class EntityFrameworkRepository<TEntity> : IGenericRepository<TEntity>
         where TEntity : class
-        where TContext : DbContext
     {
-        public EntityFrameworkRepository(IDbContextFactory<TContext> dbContextFactory)
+        public EntityFrameworkRepository(IDbContextFactory<DbContext> dbContextFactory)
         {
             _dbContextFactory = dbContextFactory;
         }
@@ -95,6 +94,6 @@ namespace Arcturus.Concrete
             }
         }
 
-        private readonly IDbContextFactory<TContext> _dbContextFactory;
+        private readonly IDbContextFactory<DbContext> _dbContextFactory;
     }
 }

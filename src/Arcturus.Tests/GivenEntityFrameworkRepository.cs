@@ -16,7 +16,7 @@ namespace Arcturus.Tests
         public void Setup()
         {
             _factory = new TestContextFactory();
-            _repository = new EntityFrameworkRepository<Student, TestContext>(_factory);
+            _repository = new EntityFrameworkRepository<Student>(_factory);
         }
 
         [Test]
@@ -54,7 +54,7 @@ namespace Arcturus.Tests
             Assert.IsEmpty(entities);
         }
 
-        private EntityFrameworkRepository<Student, TestContext> _repository;
+        private EntityFrameworkRepository<Student> _repository;
         private TestContextFactory _factory;
 
         public class Student

@@ -1,12 +1,14 @@
 ﻿using Arcturus.Concrete;
 using Ninject;
 using System;
+using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Arcturus.Abstract
 {
     public abstract class NinjectControllerFactory<TContext> : DefaultControllerFactory
+        where TContext : DbContext
     {
         public NinjectControllerFactory()
         {
@@ -19,7 +21,7 @@ namespace Arcturus.Abstract
         {
             kernel.Bind<IFieldMapper>().To<FieldMapper>();
             kernel.Bind(typeof(IGenericController<,>)).To(typeof(GenericController<,>));
-            kernel.Bind(typeof(IGenericRepository<>)).To(typeof(EntityFrameworkRepository<,>));
+            kernel.Bind(typeof(IGenericRepository<>)).To(typeof(EntityFrameworkRepository<>));
         }
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
