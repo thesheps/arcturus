@@ -21,6 +21,7 @@ namespace Arcturus.Concrete
         public void AddMapping<T1, T2>()
         {
             Mapper.CreateMap<T1, T2>();
+            Mapper.CreateMap<T2, T1>();
         }
 
         public T Map<T>(object obj)
