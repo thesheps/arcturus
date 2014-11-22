@@ -2,7 +2,7 @@
 
 namespace Arcturus.Abstract
 {
-    public interface IGenericController<TEntity, TViewModel>
+    public interface IGenericController<TViewModel>
     {
         ActionResult Index();
         ActionResult Create();
