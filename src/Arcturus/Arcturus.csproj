@@ -86,6 +86,7 @@
     <Compile Include="Concrete\GenericController.cs" />
     <Compile Include="Concrete\EntityFrameworkRepository.cs" />
     <Compile Include="Abstract\IGenericController.cs" />
+    <Compile Include="Concrete\PropertyNotFoundException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

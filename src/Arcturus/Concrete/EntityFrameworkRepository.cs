@@ -85,6 +85,16 @@ namespace Arcturus.Concrete
             }
         }
 
+        public void Delete(Func<T, bool> query)
+        {
+            using (var context = _dbContextFactory.Create())
+            {
+                var dbEntityEntry = context.Set<T>().Where(query).First();
+                context.Set<T>().Remove(dbEntityEntry);
+                context.SaveChanges();
+            }
+        }
+
         private readonly IDbContextFactory<TContext> _dbContextFactory;
     }
 }

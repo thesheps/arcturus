@@ -11,5 +11,6 @@ namespace Arcturus.Abstract
         void Insert(T item);
         void Update(T item);
         void Delete(T item);
+        void Delete(Func<T, bool> query);
     }
 }

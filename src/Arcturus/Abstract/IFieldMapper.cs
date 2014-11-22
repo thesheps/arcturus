@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Arcturus.Abstract
+﻿namespace Arcturus.Abstract
 {
     public interface IFieldMapper
     {
