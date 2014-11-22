@@ -9,6 +9,7 @@ using System.Linq;
 namespace Arcturus.Tests
 {
     [TestFixture]
+    [Ignore]
     public class GivenEntityFrameworkRepository
     {
         [SetUp]
