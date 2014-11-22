@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace Arcturus.Concrete
 {
-    public class GenericController<TEntity, TContext> : Controller, IGenericController
+    public class GenericController<TEntity, TContext> : Controller, IGenericController<TEntity>
     {
         public GenericController(IGenericRepository<TEntity, TContext> repository, IFieldMapper fieldMapper)
         {

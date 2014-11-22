@@ -6,7 +6,7 @@ using System.Web.Routing;
 
 namespace Arcturus.Abstract
 {
-    public abstract class NinjectControllerFactory<TContext> : DefaultControllerFactory
+    public abstract class NinjectControllerFactory<TEntity, TContext> : DefaultControllerFactory
     {
         public NinjectControllerFactory()
         {
@@ -18,7 +18,7 @@ namespace Arcturus.Abstract
         private void AddDefaultBindings(IKernel kernel)
         {
             kernel.Bind<IFieldMapper>().To<FieldMapper>();
-            kernel.Bind<IGenericController>().To(typeof(GenericController<,>));
+            kernel.Bind(typeof(IGenericController<>)).To(typeof(GenericController<,>));
             kernel.Bind(typeof(IGenericRepository<,>)).To(typeof(EntityFrameworkRepository<,>));
         }
 
