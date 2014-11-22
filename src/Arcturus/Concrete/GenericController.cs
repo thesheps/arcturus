@@ -25,7 +25,7 @@ namespace Arcturus.Concrete
         [HttpPost]
         public ActionResult Create(TViewModel viewModel)
         {
-            var entity = default(TEntity);
+            var entity = _fieldMapper.Map<TEntity>(viewModel);
             if (ModelState.IsValid)
             {
                 _repository.Insert(entity);

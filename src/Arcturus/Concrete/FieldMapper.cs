@@ -1,4 +1,5 @@
 ﻿using Arcturus.Abstract;
+using AutoMapper;
 using System.ComponentModel;
 
 namespace Arcturus.Concrete
@@ -15,6 +16,16 @@ namespace Arcturus.Concrete
             var tc = TypeDescriptor.GetConverter(pt);
             var targetValue = tc.ConvertFromString(value);
             pi.SetValue(field, targetValue);
+        }
+
+        public void AddMapping<T1, T2>()
+        {
+            Mapper.CreateMap<T1, T2>();
+        }
+
+        public T Map<T>(object obj)
+        {
+            return Mapper.Map<T>(obj);
         }
     }
 }
