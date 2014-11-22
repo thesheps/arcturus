@@ -17,6 +17,22 @@ namespace Arcturus.Concrete
             return View(items);
         }
 
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(TEntity entity)
+        {
+            if (ModelState.IsValid)
+            {
+                _repository.Insert(entity);
+                return RedirectToAction("Index");
+            }
+            return View(entity);
+        }
+
         [HttpPost]
         public void Edit(int pk, string name, string value)
         {
