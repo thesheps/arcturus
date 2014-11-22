@@ -8,12 +8,12 @@ using System.Web.Mvc;
 namespace Arcturus.Tests
 {
     [TestFixture]
-    public class GivenGenericController : IGenericRepository<TestEntity>
+    public class GivenGenericController : IGenericRepository<TestEntity, TestContext>
     {
         [SetUp]
         public void Setup()
         {
-            _controller = new GenericController<TestEntity>(this, new FieldMapper());
+            _controller = new GenericController<TestEntity, TestContext>(this, new FieldMapper());
         }
 
         [Test]
@@ -72,7 +72,7 @@ namespace Arcturus.Tests
             _deleted = true;
         }
 
-        private GenericController<TestEntity> _controller;
+        private GenericController<TestEntity, TestContext> _controller;
         private bool _updated;
         private bool _deleted;
     }

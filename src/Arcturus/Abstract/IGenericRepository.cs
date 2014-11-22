@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Arcturus.Abstract
 {
-    public interface IGenericRepository<T>
+    public interface IGenericRepository<T, TContext>
     {
         T Get(int key);
         IList<T> Get(Func<T, bool> query);

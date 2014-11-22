@@ -17,8 +17,8 @@ namespace Arcturus.Abstract
 
         private void AddDefaultBindings(IKernel kernel)
         {
-            kernel.Bind(typeof(IGenericRepository<>)).To(typeof(EntityFrameworkRepository<,>));
-            kernel.Bind<IGenericController>().To(typeof(GenericController<>));
+            kernel.Bind(typeof(IGenericRepository<,>)).To(typeof(EntityFrameworkRepository<,>));
+            kernel.Bind<IGenericController>().To(typeof(GenericController<,>));
         }
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
@@ -29,7 +29,7 @@ namespace Arcturus.Abstract
         protected override Type GetControllerType(RequestContext requestContext, string controllerName)
         {
             var t = Type.GetType(string.Format("{0}.{1}, {2}", ContainingNamespace, controllerName, ContainingAssembly), false, true);
-            var controllerType = typeof(GenericController<>).MakeGenericType(t);
+            var controllerType = typeof(GenericController<,>).MakeGenericType(t);
 
             return controllerType;
         }
