@@ -29,9 +29,16 @@ namespace Arcturus.Abstract
 
         protected override Type GetControllerType(RequestContext requestContext, string controllerName)
         {
+            var controllerType = base.GetControllerType(requestContext, controllerName);
+            if (controllerType != null)
+            {
+                return controllerType;
+            }
+
             var modelType = Type.GetType(string.Format("{0}.{1}, {2}", ModelNamespace, controllerName, ModelAssembly), false, true);
-            var controller = typeof(GenericController<,>).MakeGenericType(modelType, typeof(TContext));
-            return controller;
+            controllerType = typeof(GenericController<,>).MakeGenericType(modelType, typeof(TContext));
+            
+            return controllerType;
         }
 
         protected abstract void AddCustomBindings(IKernel _kernel);
