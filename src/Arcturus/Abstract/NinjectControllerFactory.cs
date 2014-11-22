@@ -6,7 +6,7 @@ using System.Web.Routing;
 
 namespace Arcturus.Abstract
 {
-    public abstract class NinjectControllerFactory<TEntity, TContext> : DefaultControllerFactory
+    public abstract class NinjectControllerFactory<TContext> : DefaultControllerFactory
     {
         public NinjectControllerFactory()
         {
