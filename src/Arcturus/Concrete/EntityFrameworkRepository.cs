@@ -16,14 +16,6 @@ namespace Arcturus.Concrete
             _dbContextFactory = dbContextFactory;
         }
 
-        public IList<TEntity> GetAll()
-        {
-            using (var context = _dbContextFactory.Create())
-            {
-                return context.Set<TEntity>().ToList();
-            }
-        }
-
         public TEntity Get(int key)
         {
             using (var context = _dbContextFactory.Create())
@@ -32,11 +24,19 @@ namespace Arcturus.Concrete
             }
         }
 
-        public IList<TEntity> Get(Func<TEntity, bool> func)
+        public IEnumerable<TEntity> GetAll()
         {
             using (var context = _dbContextFactory.Create())
             {
-                return context.Set<TEntity>().Where(func).ToList();
+                return context.Set<TEntity>();
+            }
+        }
+
+        public IEnumerable<TEntity> Get(Func<TEntity, bool> func)
+        {
+            using (var context = _dbContextFactory.Create())
+            {
+                return context.Set<TEntity>().Where(func);
             }
         }
 
