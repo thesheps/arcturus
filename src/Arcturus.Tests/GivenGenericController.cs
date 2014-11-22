@@ -42,12 +42,12 @@ namespace Arcturus.Tests
             return new TestEntity();
         }
 
-        public IEnumerable<TestEntity> Get(Func<TestEntity, bool> query)
+        public IList<TestEntity> Get(Func<TestEntity, bool> query)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<TestEntity> GetAll()
+        public IList<TestEntity> GetAll()
         {
             return new List<TestEntity>();
         }

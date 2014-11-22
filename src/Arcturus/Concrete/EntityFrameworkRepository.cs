@@ -23,19 +23,19 @@ namespace Arcturus.Concrete
             }
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public IList<TEntity> GetAll()
         {
             using (var context = _dbContextFactory.Create())
             {
-                return context.Set<TEntity>();
+                return context.Set<TEntity>().ToList();
             }
         }
 
-        public IEnumerable<TEntity> Get(Func<TEntity, bool> func)
+        public IList<TEntity> Get(Func<TEntity, bool> func)
         {
             using (var context = _dbContextFactory.Create())
             {
-                return context.Set<TEntity>().Where(func);
+                return context.Set<TEntity>().Where(func).ToList();
             }
         }
 

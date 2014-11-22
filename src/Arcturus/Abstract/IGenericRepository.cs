@@ -6,8 +6,8 @@ namespace Arcturus.Abstract
     public interface IGenericRepository<TEntity>
     {
         TEntity Get(int key);
-        IEnumerable<TEntity> Get(Func<TEntity, bool> query);
-        IEnumerable<TEntity> GetAll();
+        IList<TEntity> Get(Func<TEntity, bool> query);
+        IList<TEntity> GetAll();
         void Insert(TEntity item);
         void Update(TEntity item);
         void Delete(TEntity item);
