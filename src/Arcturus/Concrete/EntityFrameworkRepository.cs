@@ -7,8 +7,8 @@ using System.Linq;
 
 namespace Arcturus.Concrete
 {
-    public class EntityFrameworkRepository<T, TContext> : IGenericRepository<T, TContext>
-        where T : class
+    public class EntityFrameworkRepository<TEntity, TContext> : IGenericRepository<TEntity, TContext>
+        where TEntity : class
         where TContext : DbContext
     {
         public EntityFrameworkRepository(IDbContextFactory<TContext> dbContextFactory)
@@ -16,48 +16,48 @@ namespace Arcturus.Concrete
             _dbContextFactory = dbContextFactory;
         }
 
-        public IList<T> GetAll()
+        public IList<TEntity> GetAll()
         {
             using (var context = _dbContextFactory.Create())
             {
-                return context.Set<T>().ToList();
+                return context.Set<TEntity>().ToList();
             }
         }
 
-        public T Get(int key)
+        public TEntity Get(int key)
         {
             using (var context = _dbContextFactory.Create())
             {
-                return context.Set<T>().Find(key);
+                return context.Set<TEntity>().Find(key);
             }
         }
 
-        public IList<T> Get(Func<T, bool> func)
+        public IList<TEntity> Get(Func<TEntity, bool> func)
         {
             using (var context = _dbContextFactory.Create())
             {
-                return context.Set<T>().Where(func).ToList();
+                return context.Set<TEntity>().Where(func).ToList();
             }
         }
 
-        public void Insert(T item)
+        public void Insert(TEntity item)
         {
             using (var context = _dbContextFactory.Create())
             {
-                context.Set<T>().Add(item);
+                context.Set<TEntity>().Add(item);
                 context.SaveChanges();
             }
         }
 
-        public void Update(T item)
+        public void Update(TEntity item)
         {
             using (var context = _dbContextFactory.Create())
             {
-                var entity = context.Entry<T>(item);
+                var entity = context.Entry<TEntity>(item);
 
                 if (entity.State == EntityState.Detached)
                 {
-                    context.Set<T>().Attach(entity.Entity);
+                    context.Set<TEntity>().Attach(entity.Entity);
                 }
 
                 entity.State = EntityState.Modified;
@@ -65,7 +65,7 @@ namespace Arcturus.Concrete
             }
         }
 
-        public void Delete(T item)
+        public void Delete(TEntity item)
         {
             using (var context = _dbContextFactory.Create())
             {
@@ -77,20 +77,20 @@ namespace Arcturus.Concrete
                 }
                 else
                 {
-                    context.Set<T>().Attach(item);
-                    context.Set<T>().Remove(item);
+                    context.Set<TEntity>().Attach(item);
+                    context.Set<TEntity>().Remove(item);
                 }
 
                 context.SaveChanges();
             }
         }
 
-        public void Delete(Func<T, bool> query)
+        public void Delete(Func<TEntity, bool> query)
         {
             using (var context = _dbContextFactory.Create())
             {
-                var dbEntityEntry = context.Set<T>().Where(query).First();
-                context.Set<T>().Remove(dbEntityEntry);
+                var dbEntityEntry = context.Set<TEntity>().Where(query).First();
+                context.Set<TEntity>().Remove(dbEntityEntry);
                 context.SaveChanges();
             }
         }

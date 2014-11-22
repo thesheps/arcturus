@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace Arcturus.Abstract
 {
-    public interface IGenericRepository<T, TContext>
+    public interface IGenericRepository<TEntity, TContext>
     {
-        T Get(int key);
-        IList<T> Get(Func<T, bool> query);
-        IList<T> GetAll();
-        void Insert(T item);
-        void Update(T item);
-        void Delete(T item);
-        void Delete(Func<T, bool> query);
+        TEntity Get(int key);
+        IList<TEntity> Get(Func<TEntity, bool> query);
+        IList<TEntity> GetAll();
+        void Insert(TEntity item);
+        void Update(TEntity item);
+        void Delete(TEntity item);
+        void Delete(Func<TEntity, bool> query);
     }
 }

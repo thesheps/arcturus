@@ -3,9 +3,9 @@ using System.Web.Mvc;
 
 namespace Arcturus.Concrete
 {
-    public class GenericController<T, TContext> : Controller, IGenericController
+    public class GenericController<TEntity, TContext> : Controller, IGenericController
     {
-        public GenericController(IGenericRepository<T, TContext> repository, IFieldMapper fieldMapper)
+        public GenericController(IGenericRepository<TEntity, TContext> repository, IFieldMapper fieldMapper)
         {
             _repository = repository;
             _fieldMapper = fieldMapper;
@@ -32,7 +32,7 @@ namespace Arcturus.Concrete
             _repository.Delete(item);
         }
 
-        private readonly IGenericRepository<T, TContext> _repository;
+        private readonly IGenericRepository<TEntity, TContext> _repository;
         private readonly IFieldMapper _fieldMapper;
     }
 }

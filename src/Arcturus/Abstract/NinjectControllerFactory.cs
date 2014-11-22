@@ -6,7 +6,7 @@ using System.Web.Routing;
 
 namespace Arcturus.Abstract
 {
-    public abstract class NinjectControllerFactory : DefaultControllerFactory
+    public abstract class NinjectControllerFactory<TContext> : DefaultControllerFactory
     {
         public NinjectControllerFactory()
         {
@@ -17,8 +17,9 @@ namespace Arcturus.Abstract
 
         private void AddDefaultBindings(IKernel kernel)
         {
-            kernel.Bind(typeof(IGenericRepository<,>)).To(typeof(EntityFrameworkRepository<,>));
+            kernel.Bind<IFieldMapper>().To<FieldMapper>();
             kernel.Bind<IGenericController>().To(typeof(GenericController<,>));
+            kernel.Bind(typeof(IGenericRepository<,>)).To(typeof(EntityFrameworkRepository<,>));
         }
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
@@ -28,15 +29,14 @@ namespace Arcturus.Abstract
 
         protected override Type GetControllerType(RequestContext requestContext, string controllerName)
         {
-            var t = Type.GetType(string.Format("{0}.{1}, {2}", ContainingNamespace, controllerName, ContainingAssembly), false, true);
-            var controllerType = typeof(GenericController<,>).MakeGenericType(t);
-
-            return controllerType;
+            var modelType = Type.GetType(string.Format("{0}.{1}, {2}", ModelNamespace, controllerName, ModelAssembly), false, true);
+            var controller = typeof(GenericController<,>).MakeGenericType(modelType, typeof(TContext));
+            return controller;
         }
 
         protected abstract void AddCustomBindings(IKernel _kernel);
-        protected abstract string ContainingNamespace { get; }
-        protected abstract string ContainingAssembly { get; }
+        protected abstract string ModelNamespace { get; }
+        protected abstract string ModelAssembly { get; }
         private readonly IKernel _kernel;
     }
 }
