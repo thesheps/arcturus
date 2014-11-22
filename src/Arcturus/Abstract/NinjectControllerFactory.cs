@@ -11,7 +11,7 @@ namespace Arcturus.Abstract
         public NinjectControllerFactory()
         {
             _kernel = new StandardKernel();
-            this.AddBindings();
+            AddBindings(_kernel);
         }
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
@@ -27,10 +27,9 @@ namespace Arcturus.Abstract
             return controllerType;
         }
 
-        protected abstract void AddBindings();
+        protected abstract void AddBindings(IKernel kernel);
         protected abstract string ContainingNamespace { get; }
         protected abstract string ContainingAssembly { get; }
-
         private readonly IKernel _kernel;
     }
 }

@@ -7,11 +7,11 @@ using System.Linq;
 
 namespace Arcturus.Concrete
 {
-    public class GenericRepository<T, TContext> : IGenericRepository<T>
+    public class EntityFrameworkRepository<T, TContext> : IGenericRepository<T>
         where T : class
         where TContext : DbContext
     {
-        public GenericRepository(IDbContextFactory<TContext> dbContextFactory)
+        public EntityFrameworkRepository(IDbContextFactory<TContext> dbContextFactory)
         {
             _dbContextFactory = dbContextFactory;
         }
