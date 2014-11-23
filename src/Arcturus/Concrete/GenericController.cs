@@ -4,6 +4,7 @@ using System.Web.Mvc;
 
 namespace Arcturus.Concrete
 {
+    [Authorize]
     public class GenericController<TEntity, TViewModel> : Controller, IGenericController<TViewModel>
     {
         public GenericController(IGenericRepository<TEntity> repository, IFieldMapper fieldMapper)
@@ -15,7 +16,7 @@ namespace Arcturus.Concrete
         public ActionResult Index()
         {
             var items = _repository.GetAll();
-            var result = _fieldMapper.Map<IEnumerable<TViewModel>>(items);
+            var result = _fieldMapper.Map<IList<TViewModel>>(items);
             return View(result);
         }
 
