@@ -10,15 +10,13 @@ namespace Arcturus.Abstract
     public abstract class NinjectControllerFactory<TContext> : DefaultControllerFactory
         where TContext : DbContext
     {
-        public NinjectControllerFactory()
+        public NinjectControllerFactory(IKernel kernel)
         {
-            _kernel = new StandardKernel();
+            _kernel = kernel;
             _kernel.Bind<IFieldMapper>().To<FieldMapper>();
             _kernel.Bind(typeof(IGenericController<>)).To(typeof(GenericController<,>));
             _kernel.Bind(typeof(IGenericRepository<>)).To(typeof(EntityFrameworkRepository<>));
-
             AddMappings(_kernel.Get<IFieldMapper>());
-            AddCustomBindings(_kernel);
         }
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
@@ -40,7 +38,6 @@ namespace Arcturus.Abstract
             return controllerType;
         }
 
-        protected abstract void AddCustomBindings(IKernel kernel);
         protected abstract void AddMappings(IFieldMapper mapper);
         protected abstract string ModelNamespace { get; }
         protected abstract string ModelAssembly { get; }
