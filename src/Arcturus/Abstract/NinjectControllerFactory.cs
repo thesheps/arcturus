@@ -1,6 +1,7 @@
 ﻿using Arcturus.Concrete;
 using Ninject;
 using System;
+using System.Configuration;
 using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -32,15 +33,18 @@ namespace Arcturus.Abstract
                 return controllerType;
             }
 
-            var modelType = Type.GetType(string.Format("{0}.{1}, {2}", ModelNamespace, controllerName, ModelAssembly), false, true);
+            var modelType = Type.GetType(string.Format("{0}.{1}, {2}", _modelNamespace, controllerName, _modelAssembly), false, true);
             controllerType = typeof(GenericController<,>).MakeGenericType(modelType, typeof(TContext));
             
             return controllerType;
         }
 
-        protected abstract void AddMappings(IFieldMapper mapper);
-        protected abstract string ModelNamespace { get; }
-        protected abstract string ModelAssembly { get; }
+        protected virtual void AddMappings(IFieldMapper mapper)
+        {
+        }
+
+        private readonly string _modelNamespace = ConfigurationManager.AppSettings["ModelNamespace"];
+        private readonly string _modelAssembly = ConfigurationManager.AppSettings["ModelAssembly"];
         private readonly IKernel _kernel;
     }
 }
