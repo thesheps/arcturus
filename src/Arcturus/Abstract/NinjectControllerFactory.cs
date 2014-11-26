@@ -34,6 +34,7 @@ namespace Arcturus.Abstract
             }
 
             var modelType = Type.GetType(string.Format("{0}.{1}, {2}", _modelNamespace, controllerName, _modelAssembly), false, true);
+            modelType = modelType ?? typeof(UnknownModel);
             controllerType = typeof(GenericController<,>).MakeGenericType(modelType, typeof(TContext));
             
             return controllerType;

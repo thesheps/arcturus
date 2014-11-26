@@ -94,6 +94,7 @@
     <Compile Include="Concrete\EntityFrameworkRepository.cs" />
     <Compile Include="Abstract\IGenericController.cs" />
     <Compile Include="Concrete\PropertyNotFoundException.cs" />
+    <Compile Include="Concrete\UnknownModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
