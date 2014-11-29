@@ -92,7 +92,6 @@
     <Compile Include="Abstract\NinjectControllerFactory.cs" />
     <Compile Include="Concrete\Licensing.cs" />
     <Compile Include="Exceptions\LicensingNotImplementedException.cs" />
-    <Compile Include="Attributes\RequiresLicenseAttribute.cs" />
     <Compile Include="Concrete\FieldMapper.cs" />
     <Compile Include="Concrete\GenericController.cs" />
     <Compile Include="Concrete\EntityFrameworkRepository.cs" />
