@@ -62,6 +62,11 @@ namespace Arcturus.Tests
             _updated = true;
         }
 
+        public void Update(IList<TestEntity> items)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(TestEntity item)
         {
             _deleted = true;

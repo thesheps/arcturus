@@ -88,13 +88,19 @@
   <ItemGroup>
     <Compile Include="Abstract\IFieldMapper.cs" />
     <Compile Include="Abstract\IGenericRepository.cs" />
+    <Compile Include="Abstract\ILicenseProvider.cs" />
     <Compile Include="Abstract\NinjectControllerFactory.cs" />
+    <Compile Include="Concrete\Licensing.cs" />
+    <Compile Include="Exceptions\LicensingNotImplementedException.cs" />
+    <Compile Include="Attributes\RequiresLicenseAttribute.cs" />
     <Compile Include="Concrete\FieldMapper.cs" />
     <Compile Include="Concrete\GenericController.cs" />
     <Compile Include="Concrete\EntityFrameworkRepository.cs" />
     <Compile Include="Abstract\IGenericController.cs" />
-    <Compile Include="Concrete\PropertyNotFoundException.cs" />
-    <Compile Include="Concrete\UnknownModel.cs" />
+    <Compile Include="Concrete\LicenseProvider.cs" />
+    <Compile Include="Exceptions\PropertyNotFoundException.cs" />
+    <Compile Include="Domain\UnknownModel.cs" />
+    <Compile Include="Domain\License.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

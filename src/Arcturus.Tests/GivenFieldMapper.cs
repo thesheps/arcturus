@@ -1,4 +1,5 @@
 ﻿using Arcturus.Concrete;
+using Arcturus.Exceptions;
 using NUnit.Framework;
 using System;
 

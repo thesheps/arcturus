@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Arcturus.Concrete
+namespace Arcturus.Exceptions
 {
     public class PropertyNotFoundException : ArgumentException
     {

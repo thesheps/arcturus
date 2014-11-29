@@ -1,10 +1,11 @@
 ﻿using Arcturus.Abstract;
+using Arcturus.Attributes;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace Arcturus.Concrete
 {
-    [Authorize]
+    [RequiresLicense]
     public class GenericController<TEntity, TViewModel> : Controller, IGenericController<TViewModel>
     {
         public GenericController(IGenericRepository<TEntity> repository, IFieldMapper fieldMapper)

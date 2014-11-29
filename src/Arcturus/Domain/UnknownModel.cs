@@ -1,4 +1,4 @@
-﻿namespace Arcturus.Concrete
+﻿namespace Arcturus.Domain
 {
     public class UnknownModel
     {

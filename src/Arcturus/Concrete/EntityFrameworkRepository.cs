@@ -64,6 +64,14 @@ namespace Arcturus.Concrete
             }
         }
 
+        public void Update(IList<TEntity> items)
+        {
+            foreach (var item in items)
+            {
+                Update(item);
+            }
+        }
+
         public void Delete(TEntity item)
         {
             using (var context = _dbContextFactory.Create())

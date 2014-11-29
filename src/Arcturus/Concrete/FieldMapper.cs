@@ -1,4 +1,5 @@
 ﻿using Arcturus.Abstract;
+using Arcturus.Exceptions;
 using AutoMapper;
 using System.ComponentModel;
 

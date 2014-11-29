@@ -1,4 +1,5 @@
 ﻿using Arcturus.Concrete;
+using Arcturus.Domain;
 using Ninject;
 using System;
 using System.Configuration;
