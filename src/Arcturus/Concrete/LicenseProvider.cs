@@ -14,12 +14,7 @@ namespace Arcturus.Concrete
 
         public bool IsLicensed()
         {
-            var license = _licenseRepository
-                .Get(l => l.IsActive)
-                .OrderBy(l => l.ExpirationDate)
-                .LastOrDefault();
-
-            return license == null ? false : true;
+            return GetLicense() == null ? false : true;
         }
 
         public bool UpdateLicense(Guid guid)
@@ -43,6 +38,16 @@ namespace Arcturus.Concrete
             _licenseRepository.Update(license);
 
             return true;
+        }
+
+        public License GetLicense()
+        {
+            var license = _licenseRepository
+                .Get(l => l.IsActive)
+                .OrderBy(l => l.ExpirationDate)
+                .LastOrDefault();
+
+            return license;
         }
 
         private readonly IGenericRepository<License> _licenseRepository;
