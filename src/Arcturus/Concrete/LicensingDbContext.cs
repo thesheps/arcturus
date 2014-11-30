@@ -5,6 +5,8 @@ namespace Arcturus.Concrete
 {
     public class LicensingDbContext : DbContext
     {
+        public DbSet<License> License { get; set; }
+
         public LicensingDbContext(string connectionString)
             :base(connectionString)
         {
