@@ -91,7 +91,6 @@
     <Compile Include="Abstract\ILicenseProvider.cs" />
     <Compile Include="Abstract\NinjectControllerFactory.cs" />
     <Compile Include="Concrete\Licensing.cs" />
-    <Compile Include="Concrete\LicensingDbContext.cs" />
     <Compile Include="Exceptions\LicensingNotImplementedException.cs" />
     <Compile Include="Concrete\FieldMapper.cs" />
     <Compile Include="Concrete\GenericController.cs" />
