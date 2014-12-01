@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Arcturus.Domain
+namespace Arcturus.Abstract
 {
     public interface ILicense
     {
