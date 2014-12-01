@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Arcturus.Domain;
+using System;
 
 namespace Arcturus.Abstract
 {

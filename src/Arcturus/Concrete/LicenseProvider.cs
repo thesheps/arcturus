@@ -1,4 +1,5 @@
 ﻿using Arcturus.Abstract;
+using Arcturus.Domain;
 using System;
 using System.Linq;
 

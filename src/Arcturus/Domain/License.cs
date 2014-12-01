@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Arcturus.Abstract
+namespace Arcturus.Domain
 {
     public class License
     {
