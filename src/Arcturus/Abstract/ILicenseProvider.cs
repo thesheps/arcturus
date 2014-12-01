@@ -6,6 +6,6 @@ namespace Arcturus.Abstract
     {
         bool IsLicensed();
         bool UpdateLicense(Guid guid);
-        void SendLicense();
+        void SendLicense(string emailAddress);
     }
 }
