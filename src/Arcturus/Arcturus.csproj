@@ -99,7 +99,7 @@
     <Compile Include="Concrete\LicenseProvider.cs" />
     <Compile Include="Exceptions\PropertyNotFoundException.cs" />
     <Compile Include="Domain\UnknownModel.cs" />
-    <Compile Include="Abstract\ILicense.cs" />
+    <Compile Include="Domain\License.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
