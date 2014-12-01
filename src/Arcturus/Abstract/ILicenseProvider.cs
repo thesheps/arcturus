@@ -7,6 +7,6 @@ namespace Arcturus.Abstract
     {
         bool IsLicensed();
         bool UpdateLicense(Guid guid);
-        License GetLicense();
+        ILicense GetLicense();
     }
 }

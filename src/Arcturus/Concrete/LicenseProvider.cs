@@ -7,7 +7,7 @@ namespace Arcturus.Concrete
 {
     public class LicenseProvider : ILicenseProvider
     {
-        public LicenseProvider(IGenericRepository<License> licenseRepository)
+        public LicenseProvider(IGenericRepository<ILicense> licenseRepository)
         {
             _licenseRepository = licenseRepository;
         }
@@ -40,7 +40,7 @@ namespace Arcturus.Concrete
             return true;
         }
 
-        public License GetLicense()
+        public ILicense GetLicense()
         {
             var license = _licenseRepository
                 .Get(l => l.IsActive)
@@ -50,6 +50,6 @@ namespace Arcturus.Concrete
             return license;
         }
 
-        private readonly IGenericRepository<License> _licenseRepository;
+        private readonly IGenericRepository<ILicense> _licenseRepository;
     }
 }
