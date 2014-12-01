@@ -1,5 +1,4 @@
-﻿using Arcturus.Domain;
-using System;
+﻿using System;
 
 namespace Arcturus.Abstract
 {
@@ -7,6 +6,5 @@ namespace Arcturus.Abstract
     {
         bool IsLicensed();
         bool UpdateLicense(Guid guid);
-        ILicense GetLicense();
     }
 }

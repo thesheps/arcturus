@@ -96,10 +96,8 @@
     <Compile Include="Concrete\GenericController.cs" />
     <Compile Include="Concrete\EntityFrameworkRepository.cs" />
     <Compile Include="Abstract\IGenericController.cs" />
-    <Compile Include="Concrete\LicenseProvider.cs" />
     <Compile Include="Exceptions\PropertyNotFoundException.cs" />
     <Compile Include="Domain\UnknownModel.cs" />
-    <Compile Include="Abstract\ILicense.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
