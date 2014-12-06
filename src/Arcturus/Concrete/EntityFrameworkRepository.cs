@@ -23,7 +23,7 @@ namespace Arcturus.Concrete
             }
         }
 
-        public IList<TEntity> GetAll()
+        public IEnumerable<TEntity> GetAll()
         {
             using (var context = _dbContextFactory.Create())
             {
@@ -31,7 +31,7 @@ namespace Arcturus.Concrete
             }
         }
 
-        public IList<TEntity> Get(Func<TEntity, bool> func)
+        public IEnumerable<TEntity> Get(Func<TEntity, bool> func)
         {
             using (var context = _dbContextFactory.Create())
             {
