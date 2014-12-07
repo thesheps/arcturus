@@ -52,7 +52,7 @@ namespace Arcturus.Concrete
             _repository.Delete(item);
         }
 
-        private readonly IGenericRepository<TEntity> _repository;
+        protected readonly IGenericRepository<TEntity> _repository;
         private readonly IFieldMapper _fieldMapper;
     }
 }
