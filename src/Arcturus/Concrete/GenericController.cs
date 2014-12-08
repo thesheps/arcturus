@@ -53,6 +53,6 @@ namespace Arcturus.Concrete
         }
 
         protected readonly IGenericRepository<TEntity> _repository;
-        private readonly IFieldMapper _fieldMapper;
+        protected readonly IFieldMapper _fieldMapper;
     }
 }

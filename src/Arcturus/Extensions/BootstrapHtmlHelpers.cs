@@ -56,48 +56,18 @@ namespace Arcturus.Extensions
             return BuildEditor(label, input, validationMessages);
         }
 
-        public static MvcHtmlString BootstrapDropDown<TModel, TProperty>(
+        public static MvcHtmlString BootstrapDropDownList<TModel, TProperty>(
             this HtmlHelper<TModel> helper,
             Expression<Func<TModel, TProperty>> expression,
-            IList<TModel> values,
+            IEnumerable<SelectListItem> values,
             string title,
             string id)
         {
             var label = GetLabel(helper, expression, title);
-            var input = GetDropdown(helper, expression, values, id);
+            var input = GetDropdownList(helper, expression, values, title, id);
             var validationMessages = GetValidationMessage(helper, expression);
 
             return BuildEditor(label, input, validationMessages);
-        }
-
-        private static string GetDropdown<TModel, TProperty>(HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, IList<TModel> values, string id)
-        {
-            var sb = new StringBuilder();
-            sb.AppendLine("<div class='dropdown'>");
-            sb.Append("<button class='btn btn-default dropdown-toggle' type='button' data-toggle='dropdown' aria-expanded='true' id='" + id + "'>");
-            sb.Append("Dropdown<span class='caret'></span></button>");
-            sb.Append("<ul class='dropdown-menu' role='menu' aria-labelledby='" + id + "'>");
-
-            foreach (var item in values)
-            {
-                sb.Append("AAW YEAH");
-            }
-
-            sb.Append("</ul></div>");
-
-            return sb.ToString();
-        }
-
-        private static MvcHtmlString BuildEditor(string label, string input, string validationMessages)
-        {
-            var sb = new StringBuilder();
-            sb.AppendLine("<div class='form-group'>");
-            sb.AppendLine(label);
-            sb.AppendLine(input);
-            sb.AppendLine(validationMessages);
-            sb.AppendLine("</div>");
-
-            return new MvcHtmlString(sb.ToString());
         }
 
         private static string GetLabel<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, string title)
@@ -136,6 +106,24 @@ namespace Arcturus.Extensions
             sb.Append("</div>");
 
             return sb.ToString();
+        }
+
+        private static string GetDropdownList<TModel, TProperty>(HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> values, string title, string id)
+        {
+            var list = helper.DropDownListFor(expression, values, new { @class = "form-control", id = id });
+            return list.ToString();
+        }
+
+        private static MvcHtmlString BuildEditor(string label, string input, string validationMessages)
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine("<div class='form-group'>");
+            sb.AppendLine(label);
+            sb.AppendLine(input);
+            sb.AppendLine(validationMessages);
+            sb.AppendLine("</div>");
+
+            return new MvcHtmlString(sb.ToString());
         }
     }
 }
