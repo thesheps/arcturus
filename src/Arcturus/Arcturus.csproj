@@ -98,7 +98,6 @@
     <Compile Include="Abstract\IGenericController.cs" />
     <Compile Include="Exceptions\PropertyNotFoundException.cs" />
     <Compile Include="Domain\UnknownModel.cs" />
-    <Compile Include="Extensions\BootstrapHtmlHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
