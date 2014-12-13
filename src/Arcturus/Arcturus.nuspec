@@ -3,17 +3,14 @@
   <metadata>
     <id>Arcturus</id>
     <version>1.0.0</version>
-    <authors>chris</authors>
-    <owners>chris</owners>
+    <authors>Chris Shepherd</authors>
+    <owners>Chris Shepherd</owners>
     <licenseUrl>https://github.com/thesheps/arcturus/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/thesheps/arcturus</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Provides a bunch of useful utilities and tools.</description>
+    <description>Provides a bunch of useful utilities and tools to help kickstart an Mvc solution.</description>
     <releaseNotes>First release.</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>generic useful MVC</tags>
-    <dependencies>
-      <dependency id="SampleDependency" version="1.0" />
-    </dependencies>
   </metadata>
 </package>
